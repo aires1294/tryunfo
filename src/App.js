@@ -37,17 +37,17 @@ class App extends React.Component {
     const somaAttr = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
     const validationAttr = (
       somaAttr <= sumAttr
-      && cardAttr1 <= maxAttr && cardAttr1 > minAttr
-      && cardAttr2 <= maxAttr && cardAttr2 > minAttr
-      && cardAttr3 <= maxAttr && cardAttr3 > minAttr
+      && cardAttr1 <= maxAttr && cardAttr1 >= minAttr
+      && cardAttr2 <= maxAttr && cardAttr2 >= minAttr
+      && cardAttr3 <= maxAttr && cardAttr3 >= minAttr
     );
     return (validationName && validationAttr);
   };
 
-  onInputChange = ({ target }) => {
-    console.log(target);
+  onHandleChange = ({ target }) => {
+    // console.log(target);
     const { name, type } = target;
-    const value = type === 'checkbox' ? target.checked : target.value;
+    const value = (type === 'checkbox') ? target.checked : target.value;
     this.setState({
       [name]: value,
     }, () => {
@@ -74,13 +74,12 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
-      isSaveButtonDisabled,
       // cards
-    } = this.state;
+      isSaveButtonDisabled } = this.state;
     return (
       <div>
         <Form
-          onInputChange={ this.onInputChange }
+          onInputChange={ this.onHandleChange }
           cardName={ cardName }
           cardDescription={ cardDescription }
           cardAttr1={ cardAttr1 }
