@@ -15,9 +15,9 @@ class Card extends React.Component {
 
     return (
       <div>
-        <h1 data-testid="name-card">
+        <h3 data-testid="name-card">
           { cardName }
-        </h1>
+        </h3>
 
         <img data-testid="image-card" src={ cardImage } alt={ cardName } />
 
