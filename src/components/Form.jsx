@@ -171,8 +171,8 @@ class Form extends React.Component {
 Form.propTypes = {
   cardName: PropTypes.string,
   cardDescription: PropTypes.string,
-  cardAttr1: PropTypes.number,
-  cardAttr2: PropTypes.number,
+  cardAttr1: PropTypes.string,
+  cardAttr2: PropTypes.string,
   cardAttr3: PropTypes.string,
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
