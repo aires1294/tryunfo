@@ -2,6 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
+  verifyTrunfo = (hasTrunfo) => {
+    if (hasTrunfo) {
+      return (
+        <p>Você já tem um Super Trunfo em seu baralho</p>
+      );
+    }
+    const { cardTrunfo, onInputChange } = this.props;
+    return (
+      <div>
+        <input
+          id="super-trunfo"
+          type="checkbox"
+          data-testid="trunfo-input"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+          // defaultChecked={ cardTrunfo }
+          name="cardTrunfo"
+        />
+      </div>
+    );
+  };
+
   render() {
     const {
       cardName,
@@ -12,7 +34,7 @@ class Form extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      //   hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick } = this.props;
@@ -108,15 +130,16 @@ class Form extends React.Component {
 
         <label htmlFor="super-trunfo">
           Super Trunfo:
-          <input
+          {this.verifyTrunfo(hasTrunfo)}
+          {/* <input
             id="super-trunfo"
             type="checkbox"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
             onChange={ onInputChange }
-            defaultChecked={ cardTrunfo }
+            // defaultChecked={ cardTrunfo }
             name="cardTrunfo"
-          />
+          /> */}
         </label>
 
         <button
@@ -133,6 +156,7 @@ class Form extends React.Component {
               cardImage,
               cardRare,
               cardTrunfo,
+              hasTrunfo,
             });
           } }
         >
@@ -147,13 +171,13 @@ class Form extends React.Component {
 Form.propTypes = {
   cardName: PropTypes.string,
   cardDescription: PropTypes.string,
-  cardAttr1: PropTypes.string,
-  cardAttr2: PropTypes.string,
+  cardAttr1: PropTypes.number,
+  cardAttr2: PropTypes.number,
   cardAttr3: PropTypes.string,
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
   cardTrunfo: PropTypes.bool,
-  //   hasTrunfo: PropTypes.bool,
+  hasTrunfo: PropTypes.bool,
   isSaveButtonDisabled: PropTypes.bool,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,

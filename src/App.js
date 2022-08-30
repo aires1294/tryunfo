@@ -64,10 +64,15 @@ class App extends React.Component {
   };
 
   onSaveButtonClick = (objetoCard) => {
+    const { cardTrunfo, hasTrunfo } = this.state;
+    this.setState({
+      hasTrunfo: hasTrunfo || cardTrunfo,
+    });
     this.setState((prevState) => ({
       data: [...prevState.data, objetoCard],
     }), () => {
       this.setState({
+        cardTrunfo: false,
         cardName: '',
         cardDescription: '',
         cardAttr1: 0,
