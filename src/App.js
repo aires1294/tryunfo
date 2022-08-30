@@ -63,7 +63,7 @@ class App extends React.Component {
     });
   };
 
-  saveButtonClick = (objetoCard) => {
+  onSaveButtonClick = (objetoCard) => {
     this.setState((prevState) => ({
       data: [...prevState.data, objetoCard],
     }), () => {
@@ -106,7 +106,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
-          saveButtonClick={ this.saveButtonClick }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
